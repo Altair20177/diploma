@@ -1,0 +1,76 @@
+.table {
+    margin: 0 auto;
+    font-size: 18px;
+
+    &-header {
+        font-weight: normal;
+        margin-bottom: 10px;
+        border-bottom: none;
+        display: grid;
+        text-align: center;
+        height: 30px;
+    }
+
+    &-line {
+        border-bottom: 1px solid #afafaf;
+        font-weight: 600;
+        align-items: center;
+        display: grid;
+        text-align: center;
+        height: 40px;
+    }
+
+    &_border_black {
+        border-bottom: 1px solid black;
+    }
+
+    &_border_gray {
+        border-bottom: 1px solid rgb(205, 205, 205);
+    }
+
+    &_weight_normal {
+        font-weight: normal;
+    }
+
+    &_weight_bold {
+        font-weight: 600;
+    }
+
+    &_height_low {
+        height: 35px;
+    }
+
+    &_height_high {
+        height: 40px;
+    }
+
+    &_height_veryhigh {
+        height: 50px;
+    }
+
+    &_type_markets {
+        grid-template-columns: 5% 30% 25% 20% 20%;
+    }
+
+    &_type_wallet {
+        grid-template-columns: 24% 12% 26% 26% 12%;
+        overflow-y: auto;
+        max-height: 155px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .adaptive {
+        display: none;
+    }
+
+    .table_type_markets {
+        grid-template-columns: 20% 40% 40%;
+    }
+
+    .table_type_wallet {
+        grid-template-columns: 27% 15% 40% 18%;
+        font-size: 16px;
+    }
+}
