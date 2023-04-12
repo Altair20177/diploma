@@ -10,6 +10,5 @@ export default function Converter() {
 }
 
 const Wrapper = styled.div`
-  width: 80%;
   margin: 50px auto 0;
 `;
