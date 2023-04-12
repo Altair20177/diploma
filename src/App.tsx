@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import MainPage from "./pages/MainPage";
 import CryptAboutPage from "./pages/CryptAboutPage";
@@ -8,6 +8,8 @@ import { Crypt, CryptFromFetch } from "./types";
 import { useAppDispatch } from "./hooks";
 import { useQuery } from "@apollo/client";
 import { GET_FRESH_DATA_ABOUT_WALLET } from "./lib/query/crypt";
+import WalletPage from "./pages/WalletPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -68,8 +70,11 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<Navigate to="/main" />} />
+        <Route path="/main" element={<MainPage />} />
         <Route path=":cryptId" element={<CryptAboutPage />} />
+        <Route path="/wallet" element={<WalletPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

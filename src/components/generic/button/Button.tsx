@@ -12,6 +12,7 @@ export interface ButtonProps
   children?: React.ReactNode;
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   active?: boolean;
+  action?: string;
 }
 
 export default function Button({
@@ -20,13 +21,14 @@ export default function Button({
   buttonType = ButtonTypes.button_pagination,
   onClick,
   active = false,
+  action = "",
 }: ButtonProps) {
   return (
     <button
       onClick={onClick}
       className={`button__wrapper ${size} ${buttonType} ${
         active ? "active_page" : ""
-      }`}
+      } ${action}`}
     >
       {children}
     </button>

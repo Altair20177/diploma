@@ -66,6 +66,11 @@ export enum ButtonTypes {
   button_slide = "button__wrapper_type_slide",
 }
 
+export enum ButtonActions {
+  accept = "accept",
+  cancel = "cancel",
+}
+
 export enum ButtonSizes {
   size_md = "button__wrapper_size_md",
   size_sm = "button__wrapper_size_sm",
