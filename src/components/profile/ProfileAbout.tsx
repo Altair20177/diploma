@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { ButtonTypes } from "../../types";
 import Button from "../generic/button/Button";
 
-export default function ProfileAbout() {
+export default function ProfileAbout({
+  openPage,
+}: {
+  openPage: (path: string) => void;
+}) {
   const arr = [
     { key: "Name", value: "Maksim" },
     { key: "Surname", value: "Tananykin" },
@@ -22,7 +26,10 @@ export default function ProfileAbout() {
           );
         })}
       </Information>
-      <Button onClick={() => {}} buttonType={ButtonTypes.button_action}>
+      <Button
+        onClick={() => openPage("profile")}
+        buttonType={ButtonTypes.button_action}
+      >
         Change information
       </Button>
     </>
@@ -42,5 +49,5 @@ const Field = styled.p`
 `;
 
 const Information = styled.div`
-    margin-bottom: 30px;
-`
+  margin-bottom: 30px;
+`;

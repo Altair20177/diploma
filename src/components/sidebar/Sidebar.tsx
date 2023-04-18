@@ -71,7 +71,7 @@ export default function Sidebar({
         <Title clicked onClick={() => openPage("profile")}>
           About Profile
         </Title>
-        <ProfileAbout />
+        <ProfileAbout openPage={openPage} />
         <Converter />
       </SidebarLayout>
     </>
