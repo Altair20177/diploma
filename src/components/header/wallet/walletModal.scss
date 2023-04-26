@@ -1,85 +1,94 @@
 .modal {
-    &-line {
-        display: grid;
-        grid-template-columns: 24% 12% 26% 26% 12%;
-        border-bottom: 1px solid black;
-        align-items: center;
-        height: 40px;
-        text-align: center;
-        font-size: 18px;
-    }
+  &-line {
+    display: grid;
+    grid-template-columns: 24% 12% 26% 26% 12%;
+    border-bottom: 1px solid black;
+    align-items: center;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+  }
 
-    &-table {
-        max-height: 350px;
-    }
+  &-table {
+    max-height: 350px;
+  }
 
-    &__rules {
-        text-align: center;
-        font-size: 18px;
-        margin: 10px 0;
-    }
+  &__rules {
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+  }
 
-    &-pie {
-        width: 280px;
-        height: 280px;
-        margin: 0 auto;
-        margin-top: 10px;
+  &-pie {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  &-body.wallet {
+    display: flex;
+    width: 100%;
+
+    &:hover{
+        cursor: default;
     }
+  }
 }
 
 .table__header {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .remove {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .form-delete {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    &__input {
-        width: 150px;
-        height: 40px;
-        border-radius: 3px;
-        border: 1px solid rgb(167, 167, 167);
-        margin-right: 20px;
-        padding: 0 10px;
-    }
+  &__input {
+    width: 150px;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid rgb(167, 167, 167);
+    margin-right: 20px;
+    padding: 0 10px;
+  }
 }
 
 .error {
-    border: 2px solid red;
+  border: 2px solid red;
 }
 
 .wallet__empty {
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-    padding: 30px 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 30px 0;
 }
 
 @media (max-width: 640px) {
-    .modal {
-        &-body {
-            overflow: scroll;
-        }
-        &-line {
-            width: 520px;
-        }
+  .modal {
+    &-body {
+      overflow: scroll;
     }
+    &-line {
+      width: 520px;
+    }
+  }
 }
 
 @media (max-width: 420px) {
-    .modal {
-        &__title,
-        &__about {
-            font-size: 20px;
-        }
+  .modal {
+    &__title,
+    &__about {
+      font-size: 20px;
     }
+  }
 }

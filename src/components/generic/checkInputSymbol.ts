@@ -1,5 +1,4 @@
-export default function checkInputSymbol(str: string) {
-  let maxLength = 6;
+export default function checkInputSymbol(str: string, maxLength: number = 6) {
   let count = 0;
 
   if (str.indexOf(".") !== -1) maxLength = str.indexOf(".") + 6;

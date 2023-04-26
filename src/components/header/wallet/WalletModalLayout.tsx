@@ -1,14 +1,15 @@
 import "./walletModal.scss";
 
-import cross from "../../generic/icons/cross.svg";
-import { ButtonSizes, ButtonTypes, Crypt, TableTypes } from "../../../types";
-import Button from "../../generic/button/Button";
+import { Crypt, TableTypes } from "../../../types";
 import Table from "../../generic/table/Table";
 import PieChart from "../pieChart/PieChart";
+import Modal from "../../generic/Modal";
+import { Dispatch, SetStateAction } from "react";
+import WalletCard from "./WalletCard";
+import WalletRemoveCrypt from "./WalletRemoveCrypt";
 
 export interface WalletModalLayoutProps {
   walletData: Array<Crypt>;
-  closePopup: () => void;
   onChange: (
     e: React.ChangeEvent<HTMLInputElement>,
     cryptToDelete: Crypt
@@ -19,11 +20,12 @@ export interface WalletModalLayoutProps {
   requestToDelete: boolean;
   deleteAmount: string | number;
   cryptToDelete: Crypt | null;
+  setDeleteCryptModalIsOpen: Dispatch<SetStateAction<boolean>>;
+  deleteCryptModalIsOpen: boolean;
 }
 
 export default function WalletModalLayout({
   walletData,
-  closePopup,
   onChange,
   deleteCrypt,
   deleteCryptRequest,
@@ -31,6 +33,8 @@ export default function WalletModalLayout({
   requestToDelete,
   deleteAmount,
   cryptToDelete,
+  setDeleteCryptModalIsOpen,
+  deleteCryptModalIsOpen,
 }: WalletModalLayoutProps) {
   function createDataForTableWallet(walletData?: Array<Crypt>) {
     const data: { headers: string[]; lines: string[][] } = {
@@ -56,51 +60,22 @@ export default function WalletModalLayout({
 
   return (
     <>
-      <div className="modal-header">
-        <div className="modal__title">Your Wallet</div>
-        <img
-          src={cross}
-          alt="cross"
-          className="modal__cross"
-          onClick={closePopup}
+      <Modal
+        setIsPopupOpen={setDeleteCryptModalIsOpen}
+        isPopupOpen={deleteCryptModalIsOpen}
+      >
+        <WalletRemoveCrypt
+          error={error}
+          cryptToDelete={cryptToDelete}
+          deleteAmount={deleteAmount}
+          onChange={onChange}
+          deleteCrypt={deleteCrypt}
         />
-      </div>
-      {requestToDelete && cryptToDelete ? (
-        <>
-          <p className="modal__rules">
-            Minimal value - 0.00001. Maximal value -{" "}
-            {cryptToDelete.amount < 999999
-              ? Math.floor(cryptToDelete.amount * 10000) / 10000
-              : "999999"}
-            .
-          </p>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            action="submit"
-            className="form-delete"
-          >
-            <input
-              value={deleteAmount}
-              onChange={(e) => onChange(e, cryptToDelete)}
-              type="text"
-              className={`form-delete__input ${error ? "error" : ""}`}
-              placeholder={`Remove ${cryptToDelete.name}`}
-            />
-            <Button
-              type="submit"
-              onClick={deleteCrypt}
-              buttonType={ButtonTypes.button_delete}
-              size={ButtonSizes.size_sm}
-            >
-              Remove
-            </Button>
-          </form>
-        </>
-      ) : null}
+      </Modal>
       {walletData.length === 0 ? (
         <p className="wallet__empty">Wallet is Empty</p>
       ) : (
-        <div className="modal-body">
+        <div className="modal-body wallet">
           <Table
             type={TableTypes.table_wallet}
             headers={createDataForTableWallet().headers}
@@ -109,13 +84,16 @@ export default function WalletModalLayout({
             fontWeight="table_weight_normal"
             lineHeight="table_height_low"
           />
-          {walletData?.length !== 0 && (
+          {walletData?.length !== 0 ? (
             <div className="modal-pie">
               <PieChart data={walletData} />
             </div>
+          ) : (
+            <p className="wallet__empty">PieChart is Empty</p>
           )}
         </div>
       )}
+      <WalletCard />
     </>
   );
 }

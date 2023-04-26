@@ -92,10 +92,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {/* <WalletModal
-        isWalletOpen={isWalletOpen}
-        setIsWalletOpen={setIsWalletOpen}
-      /> */}
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}

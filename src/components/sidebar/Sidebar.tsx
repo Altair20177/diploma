@@ -62,12 +62,6 @@ export default function Sidebar({
         <BalanceAbout>
           Total: <span> {getWalletData().totalBalance}</span> USDT
         </BalanceAbout>
-        {/* <BalanceAbout>
-            Diff USD: <span>{getWalletData().diffUSD}</span> $
-          </BalanceAbout>
-          <BalanceAbout>
-            Diff percantage: <span>{getWalletData().diffPerc}</span> %
-          </BalanceAbout> */}
         <Title clicked onClick={() => openPage("profile")}>
           About Profile
         </Title>
