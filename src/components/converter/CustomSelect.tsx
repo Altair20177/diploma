@@ -8,7 +8,7 @@ export default function CustomSelect<
   return (
     <Select
       {...props}
-      maxMenuHeight={300}
+      maxMenuHeight={150}
       theme={(theme) => ({
         ...theme,
         colors: {

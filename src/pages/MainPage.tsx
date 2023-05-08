@@ -50,7 +50,7 @@ export default function MainPage() {
 
   return (
     <main className="content main">
-      <h2 className="title">All Cryptocurrency</h2>
+      <h2 className="title">All Cryptocurrencies</h2>
       {!loading && allCrypts?.getAllCrypts.length ? (
         <TableMain dataToShow={allCrypts?.getAllCrypts} />
       ) : (

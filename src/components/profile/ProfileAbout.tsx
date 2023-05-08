@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useAppSelector } from "../../hooks";
 import { ButtonTypes } from "../../types";
 import Button from "../generic/button/Button";
 
@@ -7,24 +8,26 @@ export default function ProfileAbout({
 }: {
   openPage: (path: string) => void;
 }) {
-  const arr = [
-    { key: "Name", value: "Maksim" },
-    { key: "Surname", value: "Tananykin" },
-    { key: "Email", value: "maks.tananykin.20177@mail.ru" },
-    { key: "Passport", value: "HB3138337" },
-    { key: "Age", value: "20" },
-  ];
+  const user = useAppSelector((store) => store.userAbout?.user);
 
   return (
     <>
       <Information>
-        {arr.map((elem: { key: string; value: string }) => {
-          return (
-            <Field key={elem.key}>
-              {elem.key}: <span>{elem.value}</span>
-            </Field>
-          );
-        })}
+        <Field>
+          Name: <span>{user?.name}</span>
+        </Field>
+        <Field>
+          Surname: <span>{user?.surname}</span>
+        </Field>
+        <Field>
+          Email: <span>{user?.email}</span>
+        </Field>
+        <Field>
+          Passport: <span>{user?.passport}</span>
+        </Field>
+        <Field>
+          Age: <span>{user?.age}</span>
+        </Field>
       </Information>
       <Button
         onClick={() => openPage("profile")}

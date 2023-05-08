@@ -15,6 +15,8 @@ import Button from "../components/generic/button/Button";
 import Table from "../components/generic/table/Table";
 import { useQuery } from "@apollo/client";
 import { GET_CRYPT_ABOUT } from "../lib/query/crypt";
+import graph from "../components/crypt/graph.png";
+import styled from "styled-components";
 
 export default function CryptAboutPage() {
   const { cryptId } = useParams<{ cryptId: string }>();
@@ -70,7 +72,7 @@ export default function CryptAboutPage() {
           <h1 className="content__title content__title_big">
             {crypt.rates?.currencySymbol} {crypt.about.name}
           </h1>
-          <div className="two-columns">
+          <Wrapper>
             <ul className="crypt-about">
               <li className="crypt__item">
                 Rank:{" "}
@@ -123,7 +125,10 @@ export default function CryptAboutPage() {
                 Add to Wallet
               </Button>
             </ul>
-{/*             <div className="crypt-graph">
+            <Img src={graph} alt="" />
+          </Wrapper>
+          <div className="two-columns">
+            {/*             <div className="crypt-graph">
               <Graph historyProp={crypt.historyPerDay} />
             </div> */}
           </div>
@@ -139,7 +144,9 @@ export default function CryptAboutPage() {
           </div>
         </div>
       ) : (
-        <img className="preloader__item" src={spinner} alt="spinner" />
+        <PreloaderWrapper>
+          <img className="preloader__item" src={spinner} alt="spinner" />
+        </PreloaderWrapper>
       )}
       <AddCryptModal
         isPopupOpen={isPopupOpen}
@@ -149,3 +156,16 @@ export default function CryptAboutPage() {
     </section>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Img = styled.img`
+  width: 800px;
+`;
+
+const PreloaderWrapper = styled.div`
+  height: 75vh;  
+`;

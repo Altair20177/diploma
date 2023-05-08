@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router";
 import styled, { css } from "styled-components";
 import { useAppSelector } from "../../hooks";
-import { Crypt } from "../../types";
+import { Crypt, CryptFromFetch } from "../../types";
 import Converter from "../converter/Converter";
 import cross from "../generic/icons/cross.svg";
 import ProfileAbout from "../profile/ProfileAbout";
@@ -10,11 +10,13 @@ import ProfileAbout from "../profile/ProfileAbout";
 interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  allCrypts: CryptFromFetch[];
 }
 
 export default function Sidebar({
   isSidebarOpen,
   setIsSidebarOpen,
+  allCrypts,
 }: SidebarProps) {
   const walletData = useAppSelector((state) => state.walletPage);
   const navigate = useNavigate();
@@ -66,7 +68,7 @@ export default function Sidebar({
           About Profile
         </Title>
         <ProfileAbout openPage={openPage} />
-        <Converter />
+        <Converter allCrypts={allCrypts} />
       </SidebarLayout>
     </>
   );

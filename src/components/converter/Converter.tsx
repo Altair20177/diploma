@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
+import { CryptFromFetch } from "../../types";
 import checkInputSymbol from "../generic/checkInputSymbol";
 import SelectCrypt from "./SelectCrypt";
 
@@ -9,18 +10,26 @@ export interface Option {
   price: string;
 }
 
-const allOptions: Option[] = [
-  { value: "chocolate", label: "Chocolate", price: "10" },
-  { value: "strawberry", label: "Strawberry", price: "12" },
-  { value: "vanilla", label: "Vanilla", price: "14" },
-];
-
-export default function Converter() {
+export default function Converter({
+  allCrypts,
+}: {
+  allCrypts: CryptFromFetch[];
+}) {
   const [selectedOption1, setSelectedOption1] = useState<Option | null>(null);
   const [selectedOption2, setSelectedOption2] = useState<Option | null>(null);
 
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
+
+  const allOptions: Option[] = allCrypts.map((crypt) => {
+    const newOpt: Option = { value: "", label: "", price: "0" };
+
+    newOpt.value = crypt.id;
+    newOpt.label = crypt.name;
+    newOpt.price = crypt.priceUsd;
+
+    return newOpt;
+  });
 
   function changeInput(
     value: string,

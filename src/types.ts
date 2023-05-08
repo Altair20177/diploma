@@ -8,6 +8,22 @@ export type Crypt = {
   symbol?: string;
 };
 
+export type User = {
+  id: number;
+  name: string;
+  surname: string;
+  email: string;
+  passport: string;
+  password: string;
+  age: number;
+};
+
+export type UserAbout = {
+  user: User;
+  topCrypts: CryptFromFetch[];
+  cryptsInWallet: CryptFromFetch[];
+};
+
 export type CryptFromFetch = {
   changePercent24Hr: string | number;
   explorer?: string;

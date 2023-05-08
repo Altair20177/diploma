@@ -10,6 +10,7 @@ import { useQuery } from "@apollo/client";
 import { GET_FRESH_DATA_ABOUT_WALLET } from "./lib/query/crypt";
 import WalletPage from "./pages/WalletPage";
 import ProfilePage from "./pages/ProfilePage";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -76,6 +77,7 @@ function App() {
         <Route path="/wallet" element={<WalletPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
